@@ -1,0 +1,65 @@
+1.total no of card american exp bank = 
+CALCULATE(COUNT (CreditCard[Card Number]),CreditCard[Issuing Bank]="american express")
+
+2.tot no of card issued by bank of america = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="bank of america") 
+
+3.tot no card issued by citibank =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="citibank")
+
+4.tot no card issued by Wells Fargo and Barclays =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]IN{"wells fargo","barclays"})
+
+5.tot no of Visa cards Issued By Barclays = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="visa" && CreditCard[Issuing Bank]="barclays")
+
+6.tot no of master cards Issued By Chase =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="chase")
+
+7.tot no of Visa and Master card cards Issued By barclays and Chase = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]IN{"visa","master card"} && CreditCard[Issuing Bank]IN{"barclays","chase"})
+
+8.tot no Diners Club International and Discover cards Issued By Diners Club and Discover bank =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]IN{"diners club international","discover"} && CreditCard[Issuing Bank]IN{"diners club ","discover"})
+
+9.Visa and Master card cards Issued By barclays in 2010 = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]in{"visa","master card"} && CreditCard[Issuing Bank]="barclays",YEAR(CreditCard[Issue Date])=2010)
+
+10.Tot no of cards Issued By JCB,USAA and PNC bank between 2010 to 2017 = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]IN{"jcb","usaa","pnc"} && YEAR(CreditCard[Issue Date])>=2010 && YEAR(CreditCard[Issue Date]<=2017))
+
+11.Tot No of Visa cards Issued By JCB,USAA and PNC bank between 2007 to 2010 = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="visa" && CreditCard[Issuing Bank]IN{"jcb","usaa","pnc"} && YEAR(CreditCard[Issue Date])>=2007 && YEAR(CreditCard[Issue Date])<=2010)
+
+12.Tot No of Master card Issued By JCB,USAA and PNC bank between 2014 to 2017 =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="master card" && CreditCard[Issuing Bank]IN{"jcb","usaa","pnc"} && YEAR(CreditCard[Issue Date])>=2014 && YEAR(CreditCard[Issue Date])<=2017)
+
+13.Total Number of Expired Credit cards =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Expiry Date]<TODAY())
+
+14.Tot No of Visa Expired Credit cards =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="visa" && CreditCard[Expiry Date]<TODAY())
+
+15.Tot No of master card Expired Credit cards =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="master card" && CreditCard[Expiry Date]<TODAY())
+
+16.Tot No of Expired Credit cards For Barclays bank =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="barclays" && CreditCard[Expiry Date]<TODAY()) 
+
+17.Tot No of Expired Credit cards For Citibank = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="citibank" && CreditCard[Expiry Date]<TODAY()) 
+
+18.Tot No of Expired Credit cards For Bank Of America = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank]="bank of america" && CreditCard[Expiry Date]<TODAY())
+
+19.Tot no of cards Issued By JCB,USAA and PNC bank with Credit Limit more than 50000 = 
+CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Issuing Bank] IN {"jcb","usaa","pnc"} && CreditCard[Credit Limit]>50000)
+
+20.Tot no of Visa cards Issued By barclays,Citibank,chase bank with Credit Limit more than 100000 =
+ CALCULATE(COUNT(CreditCard[Card Number]),CreditCard[Card Type Full Name]="visa" && CreditCard[Issuing Bank] IN{"barclays","citibank","chase bank"} && CreditCard[Credit Limit]>100000)
+
+21.tot no of Visa and Master cards Issued By Wells fargo,American Express,Chase bank with Credit Limit less than 100000 = 
+CALCULATE(COUNT(CreditCard[Card Holder's Name]),CreditCard[Card Type Full Name]IN {"visa","master cards"} && CreditCard[Issuing Bank] IN {"wells fargo","american express","chase bank"} && CreditCard[Credit Limit]<100000) 
+
+22.of Visa and Master cards Issued By Wells fargo,American Express,Chase bank with Credit Limit less than 150000 and greater than 100000 = 
+CALCULATE(COUNT(CreditCard[Card Holder's Name]),CreditCard[Card Type Full Name]IN {"visa","master cards"} && CreditCard[Issuing Bank] IN {"wells fargo","american express","chase bank"} && CreditCard[Credit Limit]<150000 && CreditCard[Credit Limit]>100000)
